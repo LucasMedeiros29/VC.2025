@@ -38,10 +38,12 @@
         <p class="resumo">Foi realizada a instalação do OpenCV (disponível em https://linuxize.com/post/how-to-install-opencv-on-ubuntu-20-04/) e do 
 				Miniconda3 (disponível em https://docs.conda.io/en/latest/miniconda.html#linux-installers) no ambiente Ubuntu e foi realizada 
 				a execução teste dos arquivos disponibilizados pelo professor através do terminal Ubuntu utilizando o comando "python3 nomeDoArquivo.py".</p>
-        <p class="resumo">A) Por que a janela aberta não mostra a imagem colorida?</p>
-        <div class="gallery">
-            <img src="assets/img/lab1/a.png" class="perfil" onclick="expandImage(this)">
-        </div>
+        <p class="resumo">A) Os arquivos abaixo foram baixados e salvos na pasta do laboratório, onde o programa “L2_cal.py” foi executado para realizar a calibração da primeira câmera utilizando as imagens de teste.</p>
+        <p><a href="assets/download/lab2/L2_cal.py" download="L2_cal.py">Clique aqui para baixar o código.</a></p>
+        <p><a href="assets/download/lab2/samples.zip" download="samples.zip">Clique aqui para baixar as imagens.</a></p>
+        <p class="resumo">Responda: liste todos os parametros obtidos, colocando-os nas formas de matrizes e vetores
+(Matriz K, matriz R, vetor t, e dist ). Explique o significado de K, R, t, e dist</p>
+
         <div id="popup" class="popup">
             <span class="close" onclick="closePopup()">&times;</span>
             <img class="popup-content" id="expandedImage">
@@ -49,99 +51,81 @@
         </div>
         
 
-        <p class="resumo">B) Altere: modifique o programa para que as imagens sejam exibidas mais rápidamente e depois
-            para que sejam exibidas mais lentamente. Responda: qual a explicação de alteração de
-            velocidade de exibição, e apresente suas soluções detalhadamente.</p>
-        <div class="gallery">
-            <img src="assets/img/lab1/b.png" class="perfil" onclick="expandImage(this)">
-        </div>
+        <p class="resumo">B) O programa “L2_chess.py” foi modificado e executado para salvar diversas fotos do tabuleiro real com o nome de um dos integrantes da equipe, conforme arquivo disponivel abaixo. Foram obtidos entre 10 a 15 imagens do padrão de calibração (tabuleiro). Em seguida, com estas imagens obtidas, foi feita a calibração da câmera com o programa
+“L2_cal.py” </p>
+        <p class="resumo">Responda: liste todos os parametros obtidos, colocando-os nas formas de matrizes e vetores
+(Matriz K, matriz R, vetor t, vetor dos coeficientes de distorção). Compare e analise as
+diferenças com o obtido no item anterior.
+Apresente o valor númérico obtido pela calibração de sua câmera dos seguintes parâmetros:
+focal length, aspect ratio, skew, principal point, e comente esse resultado obtido.
+Qual o motivo de resultar um conjunto R e t para cada imagem usada na calibração? O que estas
+variáveis R e t significam perante os sistemas de coordenadas envolvidos?</p>
+        <p><a href="assets/download/lab2/L2_chess.py" download="L2_chess.py">Clique aqui para baixar o código.</a></p>
 
-        <p class="resumo">C) Altere: modifique o programa para que uma imagem da câmera seja salva
-				num arquivo “foto1.png” no momento em que for clicada a tecla ‘x’ no
-				teclado. Apresente o resultado e sua solução detalhadamente.</p>
-        <div class="gallery">
-            <img src="assets/img/lab1/c.png" class="perfil" onclick="expandImage(this)">
-        </div>
 
-        <p class="resumo">D) Altere: modifique o programa para que as imagens gravadas estejam
-				“normais” no arquivo de video salvo, e apresentem uma velocidade de
-				exibição adequada. Apresente o resultado e sua solução detalhadamente. Responda: se for necessário alterar a imagem, ou seja realizando alguma operação de procesamento nela, em que
-                ponto dos quatro programas estudados isso deve ser realizado?
-                </p>
-        <div class="gallery">
-            <img src="assets/img/lab1/d.png" class="perfil" onclick="expandImage(this)">
-        </div>
+        <p class="resumo">C) Aqui foi realizada a calibração de outra câmera.</p>
+        <p class="resumo">Responda: liste todos os parametros obtidos, colocando-os nas formas de matrizes e vetores.
+Compare e analise as diferenças com o resultado anterior, do item (B).</p>
+
+        <p class="resumo">D) Com a câmera calibrada, foram obtidas duas imagens coloridas de cada integrante da equipe utilizando o programa L2_chess.py.</p>
+        <p class="resumo"> Nestas imagens obtidas, foi realizada a correção de distorção de imagens e elaborado um programa com a
+função cv.undistort(), (vide a referência [3]), fazendo uso dos parâmetros de calibração desta
+câmera, obtidos conforme o item (B) acima. </p>
+        <p class="resumo">Foi elaborado outro programa usando a opção 2 “remapping”, da referencia [3].</p>
+
+
+
+
+
+
+
+
 
         <h3>Análise e discussão dos estudos realizados</h3>
-            <p class="resumo">Parte 1</p>
-            <p class="resumo">A) Resposta: porque o algoritmo converte a imagem original em um png em escala gray e mostra ela em seguida, podendo ser salva 
-				pressionando a tecla S.</p>
+            <p class="resumo">A) Parametros obtidos para as imagens de teste:</p>
             <div class="gallery">
-                <img src="assets/img/lab1/parte2a.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/A.png" class="perfil" onclick="expandImage(this)">
             </div>
-            <p class="resumo">B) Resposta: para alterar a velocidade, basta aumentar o valor do divisor na linha 15, fazendo com que o programa espere menos tempo 
-				para passar para o próximo frame. Para diminuir a velocidade, basta diminuir o valor do divisor. A função time.sleep faz com que o 
-				programa aguarde uma determinada quantidade de tempo antes de passar para a próxima linha, que no caso é a linha 12, que captura os 
-				frames do vídeo.</p>
+            <p class="resumo">A matriz K (ou matriz intrínseca) representa os parâmetros internos da câmera, incluindo as distâncias focais em pixels e as coordenadas do ponto principal (centro óptico), sendo essencial para converter coordenadas do espaço da imagem em coordenadas de câmera. A matriz R (matriz de rotação) descreve a orientação da câmera em relação ao sistema de coordenadas do mundo, enquanto o vetor t (vetor de translação) indica a posição da câmera nesse mesmo sistema, ambos compondo os parâmetros extrínsecos. Já o vetor dist representa os coeficientes de distorção da lente, responsáveis por modelar e corrigir deformações típicas em imagens capturadas por lentes reais, como a distorção radial e tangencial.</p>
+            
+            <p class="resumo">B) Fotos capturadas utilizando o programa L2_chess.py.</p>
             <div class="gallery">
-                <img src="assets/img/lab1/parte2b.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_1.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_2.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_3.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_5.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_6.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_15.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_19.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_20.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_21.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_33.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_34.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_35.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_38.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_43.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/b/foto_44.png" class="perfil" onclick="expandImage(this)">
             </div>
-            <p class="resumo">C) Resposta: para que o arquivo gerado fosse salvo, foi utilizado parte do programa de L1_1_img.py, mais especificamente os comandos waitKey 
-				para que o programa registrasse a tecla apertada (X (ignorar comentários no programa)) e o comando imwrite, que salva o frame no arquivo
-				foto1.png.</p>
+            <p class="resumo">Matriz K, matriz R, vetor t, e dist para essas imagens:</p>
+           
+            <p class="resumo">C) Resultado da calibração (Matriz K, matriz R, vetor t, e dist) com outra câmera:</p>
             <div class="gallery">
-                <img src="assets/img/lab1/parte2c.png" class="perfil" onclick="expandImage(this)">
+                
             </div>
-            <p class="resumo">D) Resposta: para inverter a imagem gerada, bastou alterar o valor de 0 para 1 da linha "frame = cv.flip(frame,1)". Para alterar a velocidade 
-				de gravação, basta alterar o valor fps da linha "fps = 40", quanto maior o valor, maior a velocidade de gravação. As alterações devem ser realizadas dentro do loop While.</p>
+            
+            <p class="resumo">D) Imagens obtidas de cada integrante da equipe com a câmera do item C (distorcidas):</p>
             <div class="gallery">
-                <img src="assets/img/lab1/parte2d.png" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_dist/frm_cameradistorcida0.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_dist/frm_cameradistorcida1.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_dist/frm_cameradistorcida3.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_dist/frm_cameradistorcida4.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_dist/frm_cameradistorcida6.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_dist/frm_cameradistorcida7.jpg" class="perfil" onclick="expandImage(this)">
             </div>
 
-            <p class="resumo">Parte 2</p>
-            <p class="resumo">Foto geral com todos os integrantes da EQUIPE:</p>
-	            <div class="gallery">
-            <img src="assets/img/lab1/grupo.png" class="perfil" onclick="expandImage(this)">
-        </div>
-	    
-            <p class="resumo">Foto-montagem “Avatar”:</p>
-	            <div class="gallery">
-            <img src="assets/img/lab1/montagem.png" class="perfil" onclick="expandImage(this)">
-        </div>
-	    
-            <P class="resumo">Vídeo com pessoas (devagar):</P>
-	    		<div class="video-container">
-            <video id="meuVideo" controls>
-                <source src="assets/video/pessoa_lento.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-        </div>
-            <P class="resumo">Vídeo com pessoas (rápido):</P>
-	    		<div class="video-container">
-            <video id="meuVideo" controls>
-                <source src="assets/video/pessoa_rapida.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-        </div>
-            <P class="resumo">Vídeo com objetos (devagar):</P>
-	    		<div class="video-container">
-            <video id="meuVideo" controls>
-                <source src="assets/video/obj_lento.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-        </div>
-            <P class="resumo">Vídeo com objetos (rápido):</P>
-	    		<div class="video-container">
-            <video id="meuVideo" controls>
-                <source src="assets/video/obj_rapido.mp4" type="video/mp4">
-                Seu navegador não suporta vídeos HTML5.
-            </video>
-        </div>
-
+           
         <h3>Conclusões</h3>
-        <p class="resumo">Nesse experimento foram arbodados conceitos básicos para o entendimento do funcionamento do OpenCV e do ambiente Ubuntu, sendo mais uma 
-			preparação e introdução aos próximos laboratórios. Foram usados comandos como ferramentas de personalização de mídia presentes em aplicativos 
-			usuais de edição e isso abre brecha para mais possibilidades de edição e de entendimento sobre como esses aplicativos funcionam.</p>
+        <p class="resumo"></p>
 
         <h3>Referências consultadas e indicadas</h3>
         <p class="resumo">Materiais disponibilizados pelo professor.</p>
