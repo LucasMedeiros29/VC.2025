@@ -107,6 +107,12 @@ câmera, obtidos conforme o item (B) acima. </p>
                 <img src="assets/img/lab2/b/foto_44.png" class="perfil" onclick="expandImage(this)">
             </div>
             <p class="resumo">Matriz K, matriz R, vetor t, e dist para essas imagens:</p>
+            <div class="gallery">
+                <img src="assets/img/lab2/parametrosB.png" class="perfil" onclick="expandImage(this)">
+            </div>
+            <p class="resumo">A matriz da câmera obtida pelo grupo apresenta valores de distância focal maiores (aproximadamente 695 e 692 pixels nos eixos x e y) em comparação com o exemplo (cerca de 536 pixels em ambos os eixos). Isso indica que nas fotos do grupo o tabuleiro pode ter ocupado uma área menor da imagem, sugerindo maior distância da câmera ou utilização de zoom. O centro óptico foi semelhante nos dois casos, com pequenas variações, o que demonstra consistência na calibração.</p>
+            <p class="resumo">Em relação aos coeficientes de distorção, as imagens do grupo apresentaram uma distorção significativamente mais acentuada. O valor do quinto coeficiente (–1.24) indica uma distorção de almofada, ou seja, as bordas da imagem tendem a se comprimir em relação ao centro. Já no caso do exemplo, os coeficientes indicam uma leve distorção de barril, onde as bordas se expandem. Além disso, os coeficientes de tangência nas imagens do grupo também foram ligeiramente mais relevantes, sugerindo a presença de pequenos desalinhamentos da lente ou do posicionamento do tabuleiro.</p>
+            <p class="resumo">Os vetores de rotação (rvecs) mostram que o grupo utilizou ângulos mais uniformes nas capturas, com a maioria dos valores positivos próximos de 1.5 rad em torno do eixo Z. No exemplo, os ângulos foram mais variados, incluindo rotações negativas significativas. Essa maior diversidade de orientações nas imagens do exemplo contribui para uma calibração mais robusta. Já os vetores de translação (tvecs) indicam que, embora as profundidades (eixo Z) sejam semelhantes nos dois casos, as imagens do grupo apresentaram deslocamentos laterais maiores, com valores no eixo X chegando a ±5. Isso demonstra que o tabuleiro foi posicionado de forma mais variada lateralmente nas fotos tiradas pelo grupo.</p>
            
             <p class="resumo">C) Resultado da calibração (Matriz K, matriz R, vetor t, e dist) com outra câmera:</p>
             <div class="gallery">
@@ -122,6 +128,21 @@ câmera, obtidos conforme o item (B) acima. </p>
                 <img src="assets/img/lab2/d_dist/frm_cameradistorcida6.jpg" class="perfil" onclick="expandImage(this)">
                 <img src="assets/img/lab2/d_dist/frm_cameradistorcida7.jpg" class="perfil" onclick="expandImage(this)">
             </div>
+            <p class="resumo">Imagens corrigidas:</p>
+            <div class="gallery">
+                <img src="assets/img/lab2/d_normal/corrigida_frm_cameradistorcida0.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_normal/corrigida_frm_cameradistorcida1.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_normal/corrigida_frm_cameradistorcida3.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_normal/corrigida_frm_cameradistorcida4.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_normal/corrigida_frm_cameradistorcida6.jpg" class="perfil" onclick="expandImage(this)">
+                <img src="assets/img/lab2/d_normal/corrigida_frm_cameradistorcida7.jpg" class="perfil" onclick="expandImage(this)">
+            </div>
+            <p class="resumo"></p>
+            <p><a href="assets/download/lab2/L2_cal_modificado.py" download="L2_cal_modificado.py">Clique aqui para baixar o código da correção de distorção utilizando o cv.undistort().</a></p>
+            <p class="resumo"></p>
+            <p><a href="assets/download/lab2/L2_cal_remap.py" download="L2_cal_remap.py">Clique aqui para baixar o código da correção de distorção utilizando o Remapping.</a></p>
+
+            <p class="resumo">Pode-se notar, através da haste de metal do lado esquerdo das imagens, que a reversão da distorção foi realizada com sucesso, sendo também possível notar isso no tabuleiro da terceira imagem.</p>
 
            
         <h3>Conclusões</h3>
@@ -129,6 +150,9 @@ câmera, obtidos conforme o item (B) acima. </p>
 
         <h3>Referências consultadas e indicadas</h3>
         <p class="resumo">Materiais disponibilizados pelo professor.</p>
+        <p><a href="assets/download/lab2/lab2.pdf" download="lab2.pdf">Clique aqui para baixar o roteiro do laboratório.</a></p>
+        <p class="resumo"></p>
+
 
 
     </main>
